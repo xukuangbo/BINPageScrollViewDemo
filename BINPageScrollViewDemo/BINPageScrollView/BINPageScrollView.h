@@ -50,7 +50,7 @@
 @property (weak, nonatomic) id <BINPageScrollViewDelegate>   delegate;
 @property (assign, nonatomic) BOOL cycleScrollEnabled; //default NO;
 
-- (void)reloaBINata;
+- (void)reloadData;
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 

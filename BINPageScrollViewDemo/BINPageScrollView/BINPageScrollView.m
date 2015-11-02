@@ -156,7 +156,7 @@
     if (_cycleScrollEnabled != cycleScrollEnabled)
     {
         _cycleScrollEnabled = cycleScrollEnabled;
-        [self reloaBINata];
+        [self reloadData];
     }
 }
 
@@ -204,7 +204,7 @@
             }
             
             BINPageScrollViewCell *cell = [self.dataSource pageScrollView:self cellForIndex:dateIndex];
-            [self aBINCell:cell atIndex:index];
+            [self addCell:cell atIndex:index];
         }
         
         if ((int)_scrollView.contentOffset.x % (int)_scrollView.frame.size.width > 0)
@@ -222,13 +222,13 @@
                     return;
                 }
                 BINPageScrollViewCell *cell = [self.dataSource pageScrollView:self cellForIndex:nextDataIndex];
-                [self aBINCell:cell atIndex:nextIndex];
+                [self addCell:cell atIndex:nextIndex];
             }
         }
     }
 }
 
-- (void)scrollViewDidEnBINecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if ([self.delegate respondsToSelector:@selector(pageScrollView:didEndDeceleratingAtIndex:)])
     {
@@ -241,7 +241,7 @@
     self.timerShouldInvoke = NO;
 }
 
-- (void)scrollViewDidEnBINragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     self.timerShouldInvoke = YES;
 }
@@ -269,7 +269,7 @@
 #pragma mark - public instant Method
 
 
-- (void)reloaBINata
+- (void)reloadData
 {
     if (!self.dataSource)
     {
@@ -317,7 +317,7 @@
         }
         
         BINPageScrollViewCell *cell = [self.dataSource pageScrollView:self cellForIndex:dateIndex];
-        [self aBINCell:cell atIndex:index];
+        [self addCell:cell atIndex:index];
         
         if ((int)_scrollView.contentOffset.x % (int)_scrollView.frame.size.width > 0)
         {
@@ -328,7 +328,7 @@
                 nextDataIndex = nextIndex == 0 ? _totalCount - 1 : (nextIndex == _totalCount + 1 ? 0 : nextIndex - 1);
             }
             BINPageScrollViewCell *cell = [self.dataSource pageScrollView:self cellForIndex:nextDataIndex];
-            [self aBINCell:cell atIndex:nextIndex];
+            [self addCell:cell atIndex:nextIndex];
         }
     }
 }
@@ -375,7 +375,7 @@
     return aCell;
 }
 
-- (void)aBINCell:(BINPageScrollViewCell *)cell atIndex:(NSUInteger)index
+- (void)addCell:(BINPageScrollViewCell *)cell atIndex:(NSUInteger)index
 {
     cell.pageScrollView = self;
     cell.index = index;
