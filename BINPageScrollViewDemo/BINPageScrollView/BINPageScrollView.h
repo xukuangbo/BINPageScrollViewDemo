@@ -49,6 +49,8 @@
 @property (weak, nonatomic) id <BINPageScrollViewDataSource> dataSource;
 @property (weak, nonatomic) id <BINPageScrollViewDelegate>   delegate;
 @property (assign, nonatomic) BOOL cycleScrollEnabled; //default NO;
+//@property(nonatomic,assign,getter=isShowPageLabel) BOOL showPageLabel;//default NO;
+//@property(nonatomic,assign,getter=isShowPageControl) BOOL showPageControl;
 
 - (void)reloadData;
 
