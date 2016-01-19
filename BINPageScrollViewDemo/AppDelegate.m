@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  BINPageScrollViewDemo
+//  BINPageScrollView
 //
 //  Created by BIN on 15/10/22.
 //  Copyright © 2015年 BIN. All rights reserved.

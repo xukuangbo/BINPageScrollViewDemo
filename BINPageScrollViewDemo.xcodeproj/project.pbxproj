@@ -15,7 +15,7 @@
 		FBD63DAE1BD9245600CE20FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD63DAC1BD9245600CE20FA /* LaunchScreen.storyboard */; };
 		FBD63DB91BD9245700CE20FA /* BINPageScrollViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD63DB81BD9245700CE20FA /* BINPageScrollViewDemoTests.m */; };
 		FBD63DC41BD9245700CE20FA /* BINPageScrollViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD63DC31BD9245700CE20FA /* BINPageScrollViewDemoUITests.m */; };
-		FBD63DD41BD924E900CE20FA /* BINPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD63DD31BD924E900CE20FA /* BINPageScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		FBD63DD41BD924E900CE20FA /* BINPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD63DD31BD924E900CE20FA /* BINPageScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -513,6 +513,7 @@
 				FBD63DCA1BD9245700CE20FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBD63DCB1BD9245700CE20FA /* Build configuration list for PBXNativeTarget "BINPageScrollViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +522,7 @@
 				FBD63DCD1BD9245700CE20FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBD63DCE1BD9245700CE20FA /* Build configuration list for PBXNativeTarget "BINPageScrollViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +531,7 @@
 				FBD63DD01BD9245700CE20FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

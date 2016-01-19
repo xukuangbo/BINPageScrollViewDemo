@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  BINPageScrollViewDemo
+//  BINPageScrollView
 //
 //  Created by BIN on 15/10/22.
 //  Copyright © 2015年 BIN. All rights reserved.
@@ -33,6 +33,8 @@
     pageScrollView.delegate = self;
     pageScrollView.dataSource = self;
     pageScrollView.cycleScrollEnabled = YES;
+    pageScrollView.pageIndicatorTintColor = [UIColor yellowColor];
+    pageScrollView.currentPageIndicatorTintColor = [UIColor redColor];
     self.pageScrollVoew = pageScrollView;
     
     [self.view addSubview:_pageScrollVoew];
@@ -76,7 +78,7 @@
 }
 
 -(NSTimeInterval)timeIntervalOfAutoScrollForPageScrollView:(BINPageScrollView *)pageScrollView{
-    return 4.5f;
+    return 2.5f;
 }
 
 

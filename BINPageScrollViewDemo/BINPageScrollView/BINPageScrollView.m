@@ -1,6 +1,6 @@
 //
 //  BINPageScrollView.m
-//  BINPageScrollViewDemo
+//  BINPageScrollView
 //
 //  Created by BIN on 15/10/22.
 //  Copyright © 2015年 BIN. All rights reserved.
@@ -14,6 +14,9 @@
     NSTimeInterval          _scrollTime;
     
     UIScrollView            *_scrollView;
+    
+    UIPageControl           *_pageControl;
+    
     NSMutableDictionary     *_reusableCellDict;
     NSMutableArray          *_visibleCells;
     
@@ -101,7 +104,10 @@
         _scrollTime = 0.0;
         self.backgroundColor = [UIColor clearColor];
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _pageControl = [[UIPageControl alloc] initWithFrame:(CGRectZero)];
         [self addSubview:_scrollView];
+        [self addSubview:_pageControl];
+        
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
@@ -112,7 +118,10 @@
         _reusableCellDict = [[NSMutableDictionary alloc] initWithCapacity:0];
         _visibleCells = [[NSMutableArray alloc] initWithCapacity:0];
         
+        _showPageControl = YES;
         _timerShouldInvoke = YES;
+        _cycleScrollEnabled = NO;
+        
     }
     return self;
 }
@@ -120,8 +129,12 @@
 #pragma mark - override Method
 
 - (void)layoutSubviews {
+    [self reloadData];
     [super layoutSubviews];
     CGFloat originalWidth = 0;
+    if ([self.dataSource respondsToSelector:@selector(numberOfCellsInPageScrollView:)]) {
+        _pageControl.numberOfPages = [self.dataSource numberOfCellsInPageScrollView:self];
+    }
     for (BINPageScrollViewCell *cell in _scrollView.subviews) {
         originalWidth = cell.frame.size.width;
         cell.frame = CGRectMake(cell.index * _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
@@ -139,6 +152,32 @@
         _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * _totalCount, _scrollView.frame.size.height);
     }
     
+    _pageControl.frame = CGRectMake(0, self.frame.size.height - 20 ,self.frame.size.width, 20);
+    
+}
+
+-(void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor{
+    
+    _pageIndicatorTintColor = pageIndicatorTintColor;
+    
+    _pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+    
+}
+
+-(void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor{
+    
+    _currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+    
+    _pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+    
+}
+
+-(void)setShowPageControl:(BOOL)showPageControl{
+    
+    _showPageControl = showPageControl;
+    
+    
+    _pageControl.hidden = !showPageControl;
 }
 
 - (void)removeFromSuperview
@@ -194,6 +233,7 @@
     }
     
     NSInteger index = (int)contentOffSetX / scrollView.frame.size.width;
+    
     if (index >= 0) {
         if (![self cellForIndex:index])
         {
@@ -226,6 +266,8 @@
             }
         }
     }
+    
+    _pageControl.currentPage = [self getDataIndex];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -256,6 +298,7 @@
     }
     
     [_scrollView setContentOffset: CGPointMake(_scrollView.frame.size.width * nextIndex, 0) animated:YES];
+    
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView

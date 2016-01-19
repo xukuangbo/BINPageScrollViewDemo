@@ -1,6 +1,6 @@
 //
 //  BINPageScrollView.h
-//  BINPageScrollViewDemo
+//  BINPageScrollView
 //
 //  Created by BIN on 15/10/22.
 //  Copyright © 2015年 BIN. All rights reserved.
@@ -50,7 +50,9 @@
 @property (weak, nonatomic) id <BINPageScrollViewDelegate>   delegate;
 @property (assign, nonatomic) BOOL cycleScrollEnabled; //default NO;
 //@property(nonatomic,assign,getter=isShowPageLabel) BOOL showPageLabel;//default NO;
-//@property(nonatomic,assign,getter=isShowPageControl) BOOL showPageControl;
+@property (nonatomic,assign,getter=isShowPageControl) BOOL showPageControl;
+@property (nonatomic, strong) UIColor * currentPageIndicatorTintColor;
+@property (nonatomic, strong) UIColor * pageIndicatorTintColor;
 
 - (void)reloadData;
 
