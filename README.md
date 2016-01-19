@@ -1,7 +1,7 @@
 # BINPageScrollView
 
 
-![image](https://raw.githubusercontent.com/BINDeveloper/BINPageScrollViewDemo/master/BINPageScrollView.gif)
+![image](https://github.com/BINDeveloper/BINPageScrollViewDemo/blob/master/Demo.gif)
 
 
 图片轮播，原理及使用方法与TabelView相同
